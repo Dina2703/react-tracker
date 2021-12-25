@@ -1,20 +1,21 @@
 import PropTypes from "prop-types";
+import Button from "./Button";
 
-function Header({ title, subtitle }) {
+function Header({ title }) {
   return (
-    <header>
-      <h1 style={{ color: "yellow", backgroundColor: "black" }}>
-        Task Tracker {title}
-      </h1>
-      <h2 style={subtitleStyle}>{subtitle}</h2>
+    <header className="header">
+      <h1>{title}</h1>
+      <Button color="green" text="ok" />
+      <Button color="red" text="remove" />
+      <Button color="blue" text="add" />
     </header>
   );
 }
 
 //default props
-Header.defaultProps = {
-  subtitle: "subtitle",
-};
+// Header.defaultProps = {
+//   subtitle: "subtitle",
+// };
 
 //PropTypes helps you catch errors before they happen
 Header.propTypes = {
@@ -22,9 +23,9 @@ Header.propTypes = {
 };
 
 //CSS in JS
-const subtitleStyle = {
-  color: "red",
-  backgroundColor: "gray",
-};
+// const subtitleStyle = {
+//   color: "red",
+//   backgroundColor: "gray",
+// };
 
 export default Header;
