@@ -19,9 +19,11 @@ function App() {
   //Fetch Tasks
 
   const fetchtasks = async () => {
+    //we used const because, we received some data from the server
     const res = await fetch("http://localhost:5000/tasks");
     const data = await res.json();
 
+    console.log(data);
     return data;
   };
   //Add Task
@@ -32,8 +34,12 @@ function App() {
   };
 
   //Delete Task
-  const deleteTask = (id) => {
+  const deleteTask = async (id) => {
     // console.log("delete", id);
+    //we don't need const because, we are not receiving any data, we just deleting. Second parameter is an object, where  we are passing the method we need to do over this data(first param)
+    await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: "DELETE",
+    });
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
