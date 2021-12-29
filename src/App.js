@@ -4,6 +4,7 @@ import About from "./components/About";
 import AddTask from "./components/AddTask";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import TaskDetails from "./components/TaskDetails";
 import Tasks from "./components/Tasks";
 
 function App() {
@@ -115,6 +116,7 @@ function App() {
             }
           />
           <Route path="/about" element={<About />} />
+          <Route path='/task/:id' element={<TaskDetails />} />
         </Routes>
         <Footer />
       </div>
