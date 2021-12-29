@@ -27,10 +27,25 @@ function App() {
     return data;
   };
   //Add Task
-  const addTask = (task) => {
-    const id = Math.floor(Math.random() * 100) + 1;
-    const newTask = { id, ...task };
-    setTasks([...tasks, newTask]);
+  const addTask = async (task) => {
+    // when data comes from the json-server
+    const res = await fetch("http://localhost:5000/tasks", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      //JSON.stringify turns the JS object into a JSON string
+      body: JSON.stringify(task),
+    });
+    //json() turns JSON string into JS object
+    const data = await res.json();
+
+    setTasks([...tasks, data]);
+
+    // when data was in the state of App.js
+    // const id = Math.floor(Math.random() * 100) + 1;
+    // const newTask = { id, ...task };
+    // setTasks([...tasks, newTask]);
   };
 
   //Delete Task
